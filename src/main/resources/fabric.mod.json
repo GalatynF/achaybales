@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "achaybales",
+  "version": "${version}",
+  "name": "Achaybales",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/achaybales/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.github.galatynf.achaybales.client.AchaybalesClient"
+    ],
+    "main": [
+      "com.github.galatynf.achaybales.Achaybales"
+    ]
+  },
+  "mixins": [
+    "achaybales.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.9.2+build.206",
+    "fabric": "*",
+    "minecraft": "1.16.2"
+  }
+}
