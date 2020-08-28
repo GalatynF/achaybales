@@ -54,5 +54,6 @@ abstract class DetectionMixin extends Entity{
         }
 
         return d;
+        ci.cancel;
     }*/
 }

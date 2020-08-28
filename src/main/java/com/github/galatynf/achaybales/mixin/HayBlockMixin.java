@@ -31,7 +31,6 @@ public class HayBlockMixin extends Block {
     @Inject(at = @At("INVOKE"), method = "onLandedUpon", cancellable = true)
     private void onLandedUpon(World world, BlockPos pos, Entity entity, float distance, CallbackInfo info) {
         entity.handleFallDamage(distance, 0.0F);
-        entity.playSound(Achaybales.acjumpevent, 1.0F, 1.0F);
         info.cancel();
     }
 

@@ -1,6 +1,8 @@
 package com.github.galatynf.achaybales.mixin;
 
 import com.github.galatynf.achaybales.Achaybales;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.sound.Sound;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -11,6 +13,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -29,12 +32,36 @@ public abstract class JumpingMixin extends LivingEntity {
 
     @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
 
+    @Shadow public abstract boolean isCreative();
+
+    @Shadow protected boolean isSubmergedInWater;
+
     @Inject(at = @At("INVOKE"), method = "tick")
     private void playEagleSound(CallbackInfo info) {
-        if(!onGround && getVelocity().getY() < -2) {
-            System.out.println("playing sound");
-            //super.playSound(Achaybales.acjumpevent, 1.0F, 1.0F);
-            world.playSound(null, getBlockPos(),Achaybales.acjumpevent, SoundCategory.AMBIENT, 1.0F, 1.0F);
+        if(!onGround && !isCreative() && !isSubmergedInWater){
+            double playerSpeed = getVelocity().getY();
+            BlockPos posIterator = getBlockPos();
+            boolean thereIsHayWater = false;
+            /*
+                Check if there is hay or water below the player
+             */
+            while (world.getBlockState(posIterator).getBlock() == Blocks.AIR) {
+                posIterator = posIterator.down();
+            }
+            if(world.getBlockState(posIterator).getBlock() == Blocks.HAY_BLOCK ||
+                world.getBlockState(posIterator).getBlock() == Blocks.WATER) {
+                thereIsHayWater = true;
+            }
+
+            /*
+                Check if the player is moving downwards with speed
+             */
+            if(playerSpeed < -0.5F &&
+                playerSpeed > -0.9F &&
+                world.getTime()%2 == 0 &&
+                thereIsHayWater) {
+                playSound(Achaybales.acjumpevent, 1.0F, 1.0F);
+            }
         }
     }
 }
