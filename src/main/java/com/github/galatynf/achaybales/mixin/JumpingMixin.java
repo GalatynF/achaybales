@@ -64,6 +64,7 @@ public abstract class JumpingMixin extends LivingEntity {
                 Tool.countBlocksDownwards(world, getBlockPos()) >= 30) {
 
             double horizontalPlayerSpeed = abs(getVelocity().x) + abs(getVelocity().z);
+            double verticalPlayerSpeed = getVelocity().y;
             BlockPos posIterator = getBlockPos();
             boolean thereIsHayWater = false;
 
@@ -81,7 +82,9 @@ public abstract class JumpingMixin extends LivingEntity {
             /*
                 Check if the player is moving downwards with speed
              */
-            if (thereIsHayWater && horizontalPlayerSpeed <= 1F) {
+            if (thereIsHayWater &&
+                    horizontalPlayerSpeed <= 0.15F &&
+                    verticalPlayerSpeed >= -1F) {
                 playSound(Achaybales.acjumpevent, 1.0F, 1.0F);
                 playTheSound = false;
             }

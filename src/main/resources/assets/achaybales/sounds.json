@@ -4,5 +4,11 @@
     "sounds": [
       "achaybales:acjump"
     ]
+  },
+  "landing": {
+    "subtitle": "subtitles.achaybales.landing",
+    "sounds": [
+      "achaybales:landing"
+    ]
   }
 }

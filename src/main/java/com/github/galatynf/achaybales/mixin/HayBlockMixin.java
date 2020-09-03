@@ -9,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectUtil;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -31,6 +32,9 @@ public class HayBlockMixin extends Block {
     @Inject(at = @At("INVOKE"), method = "onLandedUpon", cancellable = true)
     private void onLandedUpon(World world, BlockPos pos, Entity entity, float distance, CallbackInfo info) {
         entity.handleFallDamage(distance, 0.0F);
+        if(entity instanceof PlayerEntity && distance >= 15) {
+            entity.playSound(Achaybales.aclandevent, 1F, 1F);
+        }
         info.cancel();
     }
 
