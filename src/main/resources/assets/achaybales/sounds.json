@@ -1,8 +1,8 @@
 {
-  "acjump": {
-    "subtitle": "subtitles.achaybales.acjump",
+  "eagle": {
+    "subtitle": "subtitles.achaybales.eagle",
     "sounds": [
-      "achaybales:acjump"
+      "achaybales:eagle"
     ]
   },
   "landing": {

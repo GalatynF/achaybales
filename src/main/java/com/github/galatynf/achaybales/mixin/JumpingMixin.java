@@ -85,7 +85,7 @@ public abstract class JumpingMixin extends LivingEntity {
             if (thereIsHayWater &&
                     horizontalPlayerSpeed <= 0.15F &&
                     verticalPlayerSpeed >= -1F) {
-                playSound(Achaybales.acjumpevent, 1.0F, 1.0F);
+                playSound(Achaybales.eagleevent, 1.0F, 1.0F);
                 playTheSound = false;
             }
         }
