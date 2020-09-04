@@ -1,6 +1,7 @@
 package com.github.galatynf.achaybales.mixin;
 
 import com.github.galatynf.achaybales.Achaybales;
+import com.github.galatynf.achaybales.UntiedHay;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HayBlock;
@@ -33,16 +34,14 @@ public class HayBlockMixin extends Block {
     private void onLandedUpon(World world, BlockPos pos, Entity entity, float distance, CallbackInfo info) {
         entity.handleFallDamage(distance, 0.0F);
         if(entity instanceof PlayerEntity && distance >= 15) {
-            entity.playSound(Achaybales.aclandevent, 1F, 1F);
+            BlockPos posPlayer = entity.getBlockPos();
+            world.playSound(posPlayer.getX(), posPlayer.getY(), posPlayer.getZ(),Achaybales.aclandevent, SoundCategory.AMBIENT, 1F,1F,true);
+        }
+        if(distance >= 30) {
+            world.setBlockState(pos, Achaybales.untiedhay.getDefaultState());
         }
         info.cancel();
     }
-
-    //The hay becomes untangible like cobweb
-    /*@Override
-    public VoxelShape getCollisionShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.empty();
-    }*/
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
