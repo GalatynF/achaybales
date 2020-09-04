@@ -79,9 +79,7 @@ public abstract class JumpingMixin extends LivingEntity {
                 thereIsHayWater = true;
             }
 
-            /*
-                Check if the player is moving downwards with speed
-             */
+
             if (thereIsHayWater &&
                     horizontalPlayerSpeed <= 0.15F &&
                     verticalPlayerSpeed >= -1F) {
