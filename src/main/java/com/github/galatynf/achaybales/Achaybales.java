@@ -2,11 +2,14 @@ package com.github.galatynf.achaybales;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -21,7 +24,7 @@ public class Achaybales implements ModInitializer {
     public static SoundEvent aclandevent = new SoundEvent(acland);
 
     /** BLOCKS */
-    public static final Block untiedhay = new UntiedHay(FabricBlockSettings.of(Material.LEAVES));
+    public static final Block untiedhay = new UntiedHay(FabricBlockSettings.of(Material.LEAVES).hardness(0.5F).sounds(BlockSoundGroup.GRASS).breakByTool(FabricToolTags.HOES));
     public static final Item untiedhayitem = new BlockItem(untiedhay, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
 
     @Override

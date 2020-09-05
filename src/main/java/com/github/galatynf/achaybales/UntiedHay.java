@@ -10,12 +10,11 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-public class UntiedHay extends GlassBlock {
+public class UntiedHay extends Block {
 
     public UntiedHay(Settings settings) {
-        super(Settings.of(Material.LEAVES).nonOpaque());
+        super(settings.nonOpaque());
     }
 
     public VoxelShape getCollisionShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
