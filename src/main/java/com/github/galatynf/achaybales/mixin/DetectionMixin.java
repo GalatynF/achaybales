@@ -25,8 +25,8 @@ abstract class DetectionMixin extends Entity{
 
     @Shadow public abstract boolean isHolding(Item item);
 /*
-    @Inject(at = @At("INVOKE"), method = "getAttackDistanceScalingFactor")
-    private void detection(Entity entity, CallbackInfo ci){
+    @Inject(method = "getAttackDistanceScalingFactor(Lnet/minecraft/entity/Entity;)D", at = @At(value = "INVOKE", target =)
+    private void detection(CallbackInfo ci){
         if(isHolding(Items.ZOMBIE_HEAD)){
 
         }
@@ -55,5 +55,6 @@ abstract class DetectionMixin extends Entity{
 
         return d;
         ci.cancel;
-    }*/
+    }
+    */
 }

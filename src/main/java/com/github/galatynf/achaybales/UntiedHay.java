@@ -2,6 +2,8 @@ package com.github.galatynf.achaybales;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -30,7 +32,7 @@ public class UntiedHay extends Block {
     }
 
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        entity.slowMovement(state, new Vec3d(0.5D, 0.9D, 0.5D));
+        entity.slowMovement(state, new Vec3d(1, 1, 1));
     }
 
     public void onLandedUpon(World world, BlockPos pos, Entity entity, float distance) {
