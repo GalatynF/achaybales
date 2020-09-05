@@ -57,8 +57,8 @@ public abstract class JumpingMixin extends LivingEntity {
 
     @Inject(at = @At("INVOKE"), method = "tick")
     private void playEagleSound(CallbackInfo info) {
-        if (!onGround &&
-                !isCreative() &&
+        if (!isCreative() &&
+                !onGround &&
                 !isSubmergedInWater &&
                 playTheSound &&
                 Tool.countBlocksDownwards(world, getBlockPos()) >= 30) {
