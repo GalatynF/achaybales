@@ -75,7 +75,8 @@ public abstract class JumpingMixin extends LivingEntity {
                 posIterator = posIterator.down();
             }
             if (world.getBlockState(posIterator).getBlock() == Blocks.HAY_BLOCK ||
-                    world.getBlockState(posIterator).getBlock() == Blocks.WATER) {
+                    world.getBlockState(posIterator).getBlock() == Blocks.WATER ||
+                    world.getBlockState(posIterator).getBlock() == Achaybales.untiedhay) {
                 thereIsHayWater = true;
             }
 

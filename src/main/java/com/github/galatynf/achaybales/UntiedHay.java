@@ -37,7 +37,7 @@ public class UntiedHay extends Block {
 
     public void onLandedUpon(World world, BlockPos pos, Entity entity, float distance) {
         entity.handleFallDamage(distance, 0.0F);
-        if(entity instanceof PlayerEntity && distance >= 15) {
+        if(entity instanceof PlayerEntity) {
             BlockPos posPlayer = entity.getBlockPos();
             world.playSound(posPlayer.getX(), posPlayer.getY(), posPlayer.getZ(),Achaybales.aclandevent, SoundCategory.AMBIENT, 1F,1F,true);
         }
