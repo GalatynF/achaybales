@@ -48,8 +48,10 @@ public class UntiedHay extends Block {
             entity.getY() == pos.getY()) {
             StatusEffect statusEffectInv = StatusEffects.INVISIBILITY;
             ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(statusEffectInv, 2, 0, false, false));
-            StatusEffect statusEffectStr = StatusEffects.STRENGTH;
-            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(statusEffectStr, 2, 1, false, false));
+            if(entity instanceof PlayerEntity) {
+                StatusEffect statusEffectStr = StatusEffects.STRENGTH;
+                ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(statusEffectStr, 20, 1, false, false));
+            }
         }
     }
 }
