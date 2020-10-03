@@ -2,8 +2,10 @@ package com.github.galatynf.achaybales;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -38,6 +40,16 @@ public class UntiedHay extends Block {
             entity.getVelocity().getY() <= -1.5F) {
             BlockPos posPlayer = entity.getBlockPos();
             world.playSound(posPlayer.getX(), posPlayer.getY(), posPlayer.getZ(),Achaybales.aclandevent, SoundCategory.AMBIENT, 1F,1F,true);
+        }
+
+        BlockPos posUp = new BlockPos(new Vec3d(pos.getX(), pos.getY() + 1, pos.getZ()));
+        if(entity instanceof LivingEntity &&
+            world.getBlockState(posUp).isOf(Achaybales.untiedhay) &&
+            entity.getY() == pos.getY()) {
+            StatusEffect statusEffectInv = StatusEffects.INVISIBILITY;
+            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(statusEffectInv, 2, 0, false, false));
+            StatusEffect statusEffectStr = StatusEffects.STRENGTH;
+            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(statusEffectStr, 2, 1, false, false));
         }
     }
 }

@@ -21,9 +21,9 @@
     "achaybales.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.9.1+build.205",
+    "fabricloader": ">=0.10.0+build.208",
     "fabric": "*",
-    "minecraft": "1.16.1"
+    "minecraft": "1.16.2"
   },
   "custom": {
     "modupdater": {

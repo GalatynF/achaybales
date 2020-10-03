@@ -24,37 +24,6 @@ abstract class DetectionMixin extends Entity{
     }
 
     @Shadow public abstract boolean isHolding(Item item);
-/*
-    @Inject(method = "getAttackDistanceScalingFactor(Lnet/minecraft/entity/Entity;)D", at = @At(value = "INVOKE", target =)
-    private void detection(CallbackInfo ci){
-        if(isHolding(Items.ZOMBIE_HEAD)){
 
-        }
-        double d = 1.0D;
-        if (this.isSneaky()) {
-            d *= 0.8D;
-        }
 
-        if (this.isInvisible()) {
-            float f = getArmorVisibility();
-            if (f < 0.1F) {
-                f = 0.1F;
-            }
-
-            d *= 0.7D * (double)f;
-        }
-
-        if (entity != null) {
-            ItemStack itemStack = this.getEquippedStack(EquipmentSlot.HEAD);
-            Item item = itemStack.getItem();
-            EntityType<?> entityType = entity.getType();
-            if (entityType == EntityType.SKELETON && item == Items.SKELETON_SKULL || entityType == EntityType.ZOMBIE && item == Items.ZOMBIE_HEAD || entityType == EntityType.CREEPER && item == Items.CREEPER_HEAD) {
-                d *= 0.5D;
-            }
-        }
-
-        return d;
-        ci.cancel;
-    }
-    */
 }

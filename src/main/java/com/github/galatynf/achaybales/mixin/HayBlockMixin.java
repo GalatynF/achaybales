@@ -37,7 +37,6 @@ public class HayBlockMixin extends Block {
                     for (int j = -1; j < 2; j++) {
                         for (int k = -1; k < 2; k++) {
                             BlockPos newPos = new BlockPos(j, 0, k);
-                            System.out.println(posIterator.add(newPos));
                             if (world.getBlockState(posIterator.add(newPos)).isOf(Blocks.HAY_BLOCK)) {
                                 world.setBlockState(posIterator.add(newPos), Achaybales.untiedhay.getDefaultState());
                             }

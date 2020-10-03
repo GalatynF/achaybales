@@ -4,11 +4,11 @@
   "package": "com.github.galatynf.achaybales.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-  ],
-  "client": [
     "HayBlockMixin",
     "JumpingMixin",
     "DetectionMixin"
+  ],
+  "client": [
   ],
   "injectors": {
     "defaultRequire": 1
