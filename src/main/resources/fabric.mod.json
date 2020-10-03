@@ -23,7 +23,7 @@
   "depends": {
     "fabricloader": ">=0.10.0+build.208",
     "fabric": "*",
-    "minecraft": "1.16.2"
+    "minecraft": "1.16.1"
   },
   "custom": {
     "modupdater": {
