@@ -57,11 +57,12 @@ public abstract class JumpingMixin extends LivingEntity {
 
     @Inject(at = @At("INVOKE"), method = "tick")
     private void playEagleSound(CallbackInfo info) {
+        System.out.println(getVelocity().y);
         if (!isCreative() &&
                 !onGround &&
                 !isSubmergedInWater &&
                 playTheSound &&
-                Tool.countBlocksDownwards(world, getBlockPos()) >= 30) {
+                Tool.countBlocksDownwards(world, getBlockPos()) >= 20) {
 
             double horizontalPlayerSpeed = abs(getVelocity().x) + abs(getVelocity().z);
             double verticalPlayerSpeed = getVelocity().y;
@@ -83,8 +84,9 @@ public abstract class JumpingMixin extends LivingEntity {
 
             if (thereIsHayWater &&
                     horizontalPlayerSpeed <= 0.15F &&
-                    verticalPlayerSpeed >= -1F) {
-                playSound(Achaybales.eagleevent, 1.0F, 1.0F);
+                    verticalPlayerSpeed <= -0.7F) {
+                BlockPos posPlayer = this.getBlockPos();
+                world.playSound(posPlayer.getX(), posPlayer.getY(), posPlayer.getZ(),Achaybales.eagleevent, SoundCategory.AMBIENT, 1F,1F,true);
                 playTheSound = false;
             }
         }

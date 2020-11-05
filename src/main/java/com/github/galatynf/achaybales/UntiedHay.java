@@ -34,13 +34,13 @@ public class UntiedHay extends Block {
     }
 
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        entity.slowMovement(state, new Vec3d(1, 1, 1));
         if(entity instanceof PlayerEntity &&
             !entity.isOnGround() &&
-            entity.getVelocity().getY() <= -1.5F) {
+            entity.getVelocity().getY() <= -0.3F) {
             BlockPos posPlayer = entity.getBlockPos();
             world.playSound(posPlayer.getX(), posPlayer.getY(), posPlayer.getZ(),Achaybales.aclandevent, SoundCategory.AMBIENT, 1F,1F,true);
         }
+        entity.slowMovement(state, new Vec3d(0.8, 1, 0.8));
 
         BlockPos posUp = new BlockPos(new Vec3d(pos.getX(), pos.getY() + 1, pos.getZ()));
         if(entity instanceof LivingEntity &&

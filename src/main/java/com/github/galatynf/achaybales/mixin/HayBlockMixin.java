@@ -22,7 +22,6 @@ public class HayBlockMixin extends Block {
         super(settings);
     }
 
-    //Negates fall damage (A redirect instead of inject would be better)
     @Inject(at = @At("INVOKE"), method = "onLandedUpon", cancellable = true)
     private void onLandedUpon(World world, BlockPos pos, Entity entity, float distance, CallbackInfo info) {
         entity.handleFallDamage(distance, 0.0F);
@@ -47,10 +46,5 @@ public class HayBlockMixin extends Block {
             }
         }
         info.cancel();
-    }
-
-    @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        entity.slowMovement(state, new Vec3d(0.5D, 0.9D, 0.5D));
     }
 }
