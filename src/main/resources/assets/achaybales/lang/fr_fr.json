@@ -3,7 +3,7 @@
   "subtitles.achaybales.landing": "Atterrissage dans la paille",
   "block.achaybales.untiedhay": "Paille en vrac",
   "text.autoconfig.achaybales.title": "Les bottes de paille d'AC",
-  "text.autoconfig.achaybales.option.playeaglesound": "Jouer le son de l'aigle",
-  "text.autoconfig.achaybales.option.haybecomesMessy": "La paille devient en désordre",
+  "text.autoconfig.achaybales.option.playEagleSound": "Jouer le son de l'aigle",
+  "text.autoconfig.achaybales.option.hayBecomesMessy": "La paille devient en désordre",
   "text.autoconfig.achaybales.option.entitiesBecomeInvisible": "Les entités deviennent invisibles dans la paille en vrac"
 }

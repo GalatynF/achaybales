@@ -3,7 +3,7 @@
   "subtitles.achaybales.landing": "Landing in hay",
   "block.achaybales.untiedhay": "Untied Hay",
   "text.autoconfig.achaybales.title": "AC hay bales",
-  "text.autoconfig.achaybales.option.playeaglesound": "Play eagle sound",
-  "text.autoconfig.achaybales.option.haybecomesMessy": "Hay becomes messy",
+  "text.autoconfig.achaybales.option.playEagleSound": "Play eagle sound",
+  "text.autoconfig.achaybales.option.hayBecomesMessy": "Hay becomes messy",
   "text.autoconfig.achaybales.option.entitiesBecomeInvisible": "Entities become invisible in untied hay"
 }
