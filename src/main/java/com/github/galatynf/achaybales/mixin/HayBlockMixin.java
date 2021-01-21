@@ -1,6 +1,8 @@
 package com.github.galatynf.achaybales.mixin;
 
 import com.github.galatynf.achaybales.Achaybales;
+import com.github.galatynf.achaybales.config.ModConfig;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -26,6 +28,12 @@ public class HayBlockMixin extends Block {
     @Inject(at = @At("INVOKE"), method = "onLandedUpon", cancellable = true)
     private void onLandedUpon(World world, BlockPos pos, Entity entity, float distance, CallbackInfo info) {
         entity.handleFallDamage(distance, 0.0F);
+        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+        if(!config.hayBecomesMessy) {
+            info.cancel();
+            return;
+        }
+
         if(entity instanceof PlayerEntity) {
             if (distance >= 15) {
                 BlockPos posPlayer = entity.getBlockPos();

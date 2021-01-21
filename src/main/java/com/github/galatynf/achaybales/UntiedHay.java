@@ -1,5 +1,7 @@
 package com.github.galatynf.achaybales;
 
+import com.github.galatynf.achaybales.config.ModConfig;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -42,15 +44,19 @@ public class UntiedHay extends Block {
             world.playSound(posPlayer.getX(), posPlayer.getY(), posPlayer.getZ(),Achaybales.aclandevent, SoundCategory.AMBIENT, 1F,1F,true);
         }
 
-        BlockPos posUp = new BlockPos(new Vec3d(pos.getX(), pos.getY() + 1, pos.getZ()));
-        if(entity instanceof LivingEntity &&
-            world.getBlockState(posUp).isOf(Achaybales.untiedhay) &&
-            entity.getY() == pos.getY()) {
-            StatusEffect statusEffectInv = StatusEffects.INVISIBILITY;
-            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(statusEffectInv, 2, 0, false, false));
-            if(entity instanceof PlayerEntity) {
-                StatusEffect statusEffectStr = StatusEffects.STRENGTH;
-                ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(statusEffectStr, 20, 1, false, false));
+        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+        if(config.entitiesBecomeInvisible) {
+
+            BlockPos posUp = new BlockPos(new Vec3d(pos.getX(), pos.getY() + 1, pos.getZ()));
+            if (entity instanceof LivingEntity &&
+                    world.getBlockState(posUp).isOf(Achaybales.untiedhay) &&
+                    entity.getY() == pos.getY()) {
+                StatusEffect statusEffectInv = StatusEffects.INVISIBILITY;
+                ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(statusEffectInv, 2, 0, false, false));
+                if (entity instanceof PlayerEntity) {
+                    StatusEffect statusEffectStr = StatusEffects.STRENGTH;
+                    ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(statusEffectStr, 20, 1, false, false));
+                }
             }
         }
     }

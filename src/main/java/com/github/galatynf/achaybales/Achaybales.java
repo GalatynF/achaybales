@@ -1,12 +1,14 @@
 package com.github.galatynf.achaybales;
 
+import com.github.galatynf.achaybales.config.ModConfig;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import me.sargunvohra.mcmods.autoconfig1u.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
@@ -33,5 +35,7 @@ public class Achaybales implements ModInitializer {
         Registry.register(Registry.SOUND_EVENT, Achaybales.acland, aclandevent);
         Registry.register(Registry.BLOCK, new Identifier("achaybales", "untiedhay"), untiedhay);
         Registry.register(Registry.ITEM, new Identifier("achaybales", "untiedhay"), untiedhayitem);
+
+        AutoConfig.register(ModConfig.class, JanksonConfigSerializer::new);
     }
 }

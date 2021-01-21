@@ -2,19 +2,13 @@ package com.github.galatynf.achaybales.mixin;
 
 import com.github.galatynf.achaybales.Achaybales;
 import com.github.galatynf.achaybales.Tool;
-import jdk.vm.ci.code.site.Call;
+import com.github.galatynf.achaybales.config.ModConfig;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.client.sound.Sound;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,8 +17,6 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.rmi.StubNotFoundException;
 
 import static java.lang.Math.abs;
 
@@ -62,6 +54,11 @@ public abstract class JumpingMixin extends LivingEntity {
                 !isSubmergedInWater &&
                 playTheSound &&
                 Tool.countBlocksDownwards(world, getBlockPos()) >= 30) {
+
+            ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+            if(!config.playEagleSound) {
+                return;
+            }
 
             double horizontalPlayerSpeed = abs(getVelocity().x) + abs(getVelocity().z);
             double verticalPlayerSpeed = getVelocity().y;
