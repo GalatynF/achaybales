@@ -1,5 +1,6 @@
 package com.github.galatynf.achaybales.config;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 
@@ -8,4 +9,8 @@ public class ModConfig implements ConfigData {
     public boolean playEagleSound = true;
     public boolean hayBecomesMessy = true;
     public boolean entitiesBecomeInvisible = true;
+
+    public static ModConfig get() {
+        return AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+    }
 }

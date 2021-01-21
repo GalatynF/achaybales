@@ -3,7 +3,6 @@ package com.github.galatynf.achaybales.mixin;
 import com.github.galatynf.achaybales.Achaybales;
 import com.github.galatynf.achaybales.Tool;
 import com.github.galatynf.achaybales.config.ModConfig;
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -55,8 +54,7 @@ public abstract class JumpingMixin extends LivingEntity {
                 playTheSound &&
                 Tool.countBlocksDownwards(world, getBlockPos()) >= 30) {
 
-            ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-            if(!config.playEagleSound) {
+            if(!ModConfig.get().playEagleSound) {
                 return;
             }
 

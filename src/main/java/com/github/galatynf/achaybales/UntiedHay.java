@@ -1,7 +1,6 @@
 package com.github.galatynf.achaybales;
 
 import com.github.galatynf.achaybales.config.ModConfig;
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -44,8 +43,7 @@ public class UntiedHay extends Block {
             world.playSound(posPlayer.getX(), posPlayer.getY(), posPlayer.getZ(),Achaybales.aclandevent, SoundCategory.AMBIENT, 1F,1F,true);
         }
 
-        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-        if(config.entitiesBecomeInvisible) {
+        if(ModConfig.get().entitiesBecomeInvisible) {
 
             BlockPos posUp = new BlockPos(new Vec3d(pos.getX(), pos.getY() + 1, pos.getZ()));
             if (entity instanceof LivingEntity &&
