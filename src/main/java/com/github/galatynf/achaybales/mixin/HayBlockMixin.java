@@ -33,11 +33,11 @@ public class HayBlockMixin extends Block {
         }
 
         if(entity instanceof PlayerEntity) {
-            if (distance >= 15) {
+            if (distance >= 10) {
                 BlockPos posPlayer = entity.getBlockPos();
                 world.playSound(posPlayer.getX(), posPlayer.getY(), posPlayer.getZ(), Achaybales.aclandevent, SoundCategory.AMBIENT, 1F, 1F, true);
             }
-            if (!((PlayerEntity) entity).isCreative() && distance >= 30) {
+            if (!((PlayerEntity) entity).isCreative() && distance >= 10) {
                 BlockPos posIterator = pos;
                 for (int i = 0; i < 2; i++) {
                     for (int j = -1; j < 2; j++) {

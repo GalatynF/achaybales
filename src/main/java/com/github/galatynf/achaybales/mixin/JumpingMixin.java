@@ -52,7 +52,7 @@ public abstract class JumpingMixin extends LivingEntity {
                 !onGround &&
                 !isSubmergedInWater &&
                 playTheSound &&
-                Tool.countBlocksDownwards(world, getBlockPos()) >= 30) {
+                Tool.countBlocksDownwards(world, getBlockPos()) >= 10) {
 
             if(!ModConfig.get().playEagleSound) {
                 return;
